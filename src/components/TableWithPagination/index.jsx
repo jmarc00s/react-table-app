@@ -64,25 +64,29 @@ const TableWithPagination = ({ columns, data, onPaginate }) => {
         </div>
         <button
           onClick={() => gotoPage(0)}
-          className="px-4 py-2 text-white bg-blue-700 rounded-md shadow-sm hover:bg-blue-800"
+          className="px-4 py-2 text-white bg-blue-700 rounded-md shadow-sm hover:bg-blue-800 disabled:bg-gray-300 disabled:text-gray-800"
+          disabled={!canPreviousPage}
         >
           Primeira
         </button>
         <button
           onClick={() => previousPage()}
-          className="px-4 py-2 text-white bg-blue-700 rounded-md shadow-sm hover:bg-blue-800"
+          className="px-4 py-2 text-white bg-blue-700 rounded-md shadow-sm hover:bg-blue-800 disabled:bg-gray-300 disabled:text-gray-800"
+          disabled={!canPreviousPage}
         >
           Anterior
         </button>
         <button
           onClick={() => nextPage()}
-          className="px-4 py-2 text-white bg-blue-700 rounded-md shadow-sm hover:bg-blue-800"
+          className="px-4 py-2 text-white bg-blue-700 rounded-md shadow-sm hover:bg-blue-800 disabled:bg-gray-300 disabled:text-gray-800"
+          disabled={!canNextPage}
         >
           Próxima
         </button>
         <button
           onClick={() => gotoPage(pageCount - 1)}
-          className="px-4 py-2 text-white bg-blue-700 rounded-md shadow-sm hover:bg-blue-800"
+          className="px-4 py-2 text-white bg-blue-700 rounded-md shadow-sm hover:bg-blue-800 disabled:bg-gray-300 disabled:text-gray-800"
+          disabled={!canNextPage}
         >
           Última
         </button>
