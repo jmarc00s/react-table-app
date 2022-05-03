@@ -1,2 +1,3 @@
 # react-table
-React application to teste react-table lib
+
+React application to test react-table lib

@@ -1,45 +1,54 @@
-import { useState } from 'react'
-import logo from './logo.svg'
-import './App.css'
+import { useMemo } from 'react';
+import Navbar from './components/Navbar';
+import Table from './components/Table';
 
 function App() {
-  const [count, setCount] = useState(0)
+  const columns = useMemo(() => {
+    return [
+      {
+        Header: 'Coluna 1',
+        accessor: 'col1',
+      },
+      {
+        Header: 'Coluna 2',
+        accessor: 'col2',
+      },
+    ];
+  }, []);
+
+  const data = useMemo(() => {
+    return [
+      {
+        col1: 'Teste',
+        col2: 'Teste 2',
+      },
+      {
+        col1: 'Teste',
+        col2: 'Teste 2',
+      },
+      {
+        col1: 'Teste',
+        col2: 'Teste 2',
+      },
+      {
+        col1: 'Teste',
+        col2: 'Teste 2',
+      },
+      {
+        col1: 'Teste',
+        col2: 'Teste 2',
+      },
+    ];
+  });
 
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>Hello Vite + React!</p>
-        <p>
-          <button type="button" onClick={() => setCount((count) => count + 1)}>
-            count is: {count}
-          </button>
-        </p>
-        <p>
-          Edit <code>App.jsx</code> and save to test HMR updates.
-        </p>
-        <p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-          {' | '}
-          <a
-            className="App-link"
-            href="https://vitejs.dev/guide/features.html"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Vite Docs
-          </a>
-        </p>
-      </header>
+    <div className="flex flex-col w-screen h-screen">
+      <Navbar />
+      <div className="container mx-auto">
+        <Table columns={columns} data={data} />
+      </div>
     </div>
-  )
+  );
 }
 
-export default App
+export default App;
