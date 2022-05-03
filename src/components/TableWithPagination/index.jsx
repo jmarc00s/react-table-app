@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { useTable, usePagination } from 'react-table';
 
-const TableWithPagination = ({ columns, data, onPaginate }) => {
+const TableWithPagination = ({ columns, data, onPaginate, numberOfPages }) => {
   const {
     getTableBodyProps,
     getTableProps,
@@ -21,7 +21,7 @@ const TableWithPagination = ({ columns, data, onPaginate }) => {
       data,
       initialState: { pageSize: 3 },
       manualPagination: true,
-      pageCount: 10,
+      pageCount: numberOfPages,
     },
     usePagination
   );
