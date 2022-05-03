@@ -1,7 +1,9 @@
-import React, { useMemo } from 'react';
+import React, { useMemo, useState } from 'react';
 import TableWithPagination from '../../components/TableWithPagination';
 
 const PaginationTable = () => {
+  const [data, setData] = useState([]);
+
   const columns = useMemo(() => {
     return [
       {
@@ -15,51 +17,24 @@ const PaginationTable = () => {
     ];
   }, []);
 
-  const data = [
-    {
-      col1: 'Teste',
-      col2: 'Pagina 1',
-    },
-    {
-      col1: 'Teste',
-      col2: 'Pagina 1',
-    },
-    {
-      col1: 'Teste',
-      col2: 'Pagina 1',
-    },
-    {
-      col1: 'Teste',
-      col2: 'Pagina 2',
-    },
-    {
-      col1: 'Teste',
-      col2: 'Pagina 2',
-    },
-    {
-      col1: 'Teste',
-      col2: 'Pagina 2',
-    },
-    {
-      col1: 'Teste',
-      col2: 'Pagina 3',
-    },
-    {
-      col1: 'Teste',
-      col2: 'Pagina 3',
-    },
-    {
-      col1: 'Teste',
-      col2: 'Pagina 3',
-    },
-  ];
+  const handlePagination = (pageEvent) => {
+    setData([]);
+    const data = [];
+    for (let index = 0; index < 10; index++) {
+      data.push({
+        col1: `item${index}`,
+        col2: `Página ${pageEvent.pageIndex + 1}`,
+      });
+    }
+    setData(data);
+  };
 
   return (
     <TableWithPagination
       columns={columns}
       data={data}
       pageIndex={3}
-      onPaginate={(event) => console.log(event)}
+      onPaginate={handlePagination}
     />
   );
 };

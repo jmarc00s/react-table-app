@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useTable, usePagination } from 'react-table';
 
 const TableWithPagination = ({ columns, data, onPaginate }) => {
@@ -15,9 +15,20 @@ const TableWithPagination = ({ columns, data, onPaginate }) => {
     canPreviousPage,
     gotoPage,
     state: { pageIndex, pageSize },
-  } = useTable({ columns, data, initialState: { pageSize: 3 } }, usePagination);
+  } = useTable(
+    {
+      columns,
+      data,
+      initialState: { pageSize: 3 },
+      manualPagination: true,
+      pageCount: 10,
+    },
+    usePagination
+  );
 
-  const handlePaginate = () => {};
+  useEffect(() => {
+    onPaginate({ pageIndex, pageSize });
+  }, [pageIndex, pageSize]);
 
   return (
     <>
