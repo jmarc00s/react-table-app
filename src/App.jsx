@@ -10,7 +10,7 @@ function App() {
     <div className="flex flex-col w-screen h-screen">
       <Router location={location} routes={routes}>
         <Navbar />
-        <div className="container mx-auto">
+        <div className="container pt-3 mx-auto">
           <Outlet />
         </div>
       </Router>

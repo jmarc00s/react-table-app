@@ -1,9 +1,9 @@
 import React from 'react';
-import { useTable } from 'react-table';
+import { useTable, usePagination } from 'react-table';
 
 const Table = ({ columns, data }) => {
   const { getTableBodyProps, getTableProps, headerGroups, rows, prepareRow } =
-    useTable({ columns, data });
+    useTable({ columns, data }, usePagination);
 
   return (
     <table className="w-full border shadow-sm" {...getTableProps()}>
